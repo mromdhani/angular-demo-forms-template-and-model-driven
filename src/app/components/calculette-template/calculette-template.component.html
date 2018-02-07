@@ -1,3 +1,14 @@
-<p>
-  calculette-template works!
-</p>
+<h1> Formulaire "Template-Driven"</h1>
+<form #f="ngForm" (ngSubmit)="additionner()">
+  <input name="nombre1"  [(ngModel)]="nombre1"  type="number"  #nb1="ngModel" required  placeholder="Introduire un entier " ><br/>
+  <div *ngIf="nb1.invalid && (nb1.dirty || nb1.touched)" style="color:brown">
+            Nombre1 is required.
+  </div>
+  <input name="nombre2"  [(ngModel)]="nombre2"  type="number"  #nb2="ngModel" required  placeholder="Introduire un entier " ><br/>
+  <div *ngIf="nb2.invalid && (nb2.dirty || nb2.touched)" style="color:brown">
+             Nombre2 is required.
+  </div>
+<button  type="submit " [disabled]="!f.valid ">Additionner !</button>
+</form>
+
+<h4 class="text text-primary"><strong>{{somme}}</strong></h4>

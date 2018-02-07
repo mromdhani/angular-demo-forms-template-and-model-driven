@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-calculette-model',
@@ -7,9 +9,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CalculetteModelComponent implements OnInit {
 
-  constructor() { }
+  myForm: FormGroup;
+  post: any;
+  name: string = '';
+  description: string = '';
 
-  ngOnInit() {
+  constructor(private fb: FormBuilder) {
+      this.myForm = fb.group ({
+        'name' : [null, Validators.required],
+        'description' : [null, Validators.minLength(10)]
+   });
+ }
+ ngOnInit() {
+
+}
+ addPost(post) {
+    this.name = post.name;
+    this.description = post.description;
   }
 
 }

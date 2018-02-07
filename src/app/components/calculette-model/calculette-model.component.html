@@ -1,3 +1,16 @@
-<p>
-  calculette-model works!
-</p>
+<h1> Formulaire "Model-Driven"</h1>
+   <form  [formGroup]="myForm" (ngSubmit)="addPost(myForm.value)">
+      Votre Nom : <input type="text" formControlName="name"> <br/>
+      Votre post <textarea formControlName="description" required> </textarea><br/>
+     <input type="submit" value="Submit Form !" [disabled]="!myForm.valid">
+   </form>
+
+<div *ngIf="!name; else forminfo"></div>
+
+<ng-template #forminfo>
+  <div>
+  <p> {{name}}</p>
+  <p>Vous avez envoyé:  {{description}} </p>
+</div>
+</ng-template>
+
